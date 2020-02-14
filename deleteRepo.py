@@ -1,13 +1,13 @@
 import json
 import requests
 
-r = requests.get('https://dev.azure.com/anchitaa25/check1/_apis/git/repositories/deleteRepo?api-version=5.1', auth = ('anchitaa25','4fzcufr6inmc4yltqsp4pg5ouye7n57mvczxhg5n656jq4j5t4hq'))
+r = requests.get('https://dev.azure.com/anchitaa95/deleteRepositoryPipeline/_apis/git/repositories/deleteRepo?api-version=5.1', auth = ('anchitaa95','vqluceje46tbuwz5xnjqhecpgebcg7cjakvbzfe43vg7m2e2zynq'))
 data=r.json()
 
 json_string = json.dumps(data)
 x = json.loads(json_string)
 id = x["id"]
-URL = "https://dev.azure.com/anchitaa25/check1/_apis/git/repositories/"+id+"?api-version=5.1"
+URL = "https://dev.azure.com/anchitaa95/deleteRepositoryPipeline/_apis/git/repositories/"+id+"?api-version=5.1"
 
 id_content = {  "name": "deleteRepo",
                 "project": {
@@ -15,4 +15,4 @@ id_content = {  "name": "deleteRepo",
                 }
 }
 header = {"Content-type": "application/json"}
-a = requests.delete(url = URL,auth =  ('anchitaa25','4fzcufr6inmc4yltqsp4pg5ouye7n57mvczxhg5n656jq4j5t4hq'),data = json.dumps(id_content), headers =header)
+a = requests.delete(url = URL,auth =  ('anchitaa95','vqluceje46tbuwz5xnjqhecpgebcg7cjakvbzfe43vg7m2e2zynq'),data = json.dumps(id_content), headers =header)
