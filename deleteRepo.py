@@ -11,7 +11,7 @@ URL = "https://dev.azure.com/anchitaa95/deleteRepositoryPipeline/_apis/git/repos
 
 id_content = {  "name": "deleteRepo",
                 "project": {
-                  "id": "0bd38e45-4237-449c-b8a2-9e96e71b3a53"
+                  "id": id
                 }
 }
 header = {"Content-type": "application/json"}
