@@ -6,12 +6,12 @@ data=r.json()
 
 json_string = json.dumps(data)
 x = json.loads(json_string)
-id = x["id"]
-URL = "https://dev.azure.com/anchitaa95/deleteRepositoryPipeline/_apis/git/repositories/"+id+"?api-version=5.1"
+id1 = x["id"]
+URL = "https://dev.azure.com/anchitaa95/deleteRepositoryPipeline/_apis/git/repositories/"+id1+"?api-version=5.1"
 
 id_content = {  "name": "deleteRepo",
                 "project": {
-                  "id": id
+                  "id": id1
                 }
 }
 header = {"Content-type": "application/json"}
