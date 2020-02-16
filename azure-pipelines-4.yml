@@ -35,5 +35,7 @@ steps:
     pytest
   displayName: 'pytest'
 
-- script: python deleteRepo.py
-  displayName: 'pytest'
+- script: |
+    pip install requests
+    python deleteRepo.py
+  displayName: 'run_code'
