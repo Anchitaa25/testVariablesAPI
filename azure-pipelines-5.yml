@@ -14,7 +14,7 @@ strategy:
       python.version: '3.7'
 
 variables:
-  repositoryName: $(repoName)
+  repositoryName: ${{variables.repoName}}
 
 steps:
 - task: UsePythonVersion@0
