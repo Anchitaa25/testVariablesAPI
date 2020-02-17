@@ -10,7 +10,7 @@ x = json.loads(json_string)
 id1 = x["id"]
 URL = "https://dev.azure.com/anchitaa95/deleteRepositoryPipeline/_apis/git/repositories/"+id1+"?api-version=5.1"
 
-id_content = {  "name": "deleteRepo",
+id_content = {  "name": sys.argv[1],
                 "project": {
                   "id": id1
                 }
