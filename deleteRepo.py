@@ -1,7 +1,7 @@
 import json
 import requests
 
-r = requests.get('https://dev.azure.com/anchitaa95/deleteRepositoryPipeline/_apis/git/repositories/deleteRepo?api-version=5.1', auth = ('anchitaa95','vqluceje46tbuwz5xnjqhecpgebcg7cjakvbzfe43vg7m2e2zynq'))
+r = requests.get('https://dev.azure.com/anchitaa95/deleteRepositoryPipeline/_apis/git/repositories/deleteRepo?api-version=5.1', auth = (username,private_token))
 data=r.json()
 
 json_string = json.dumps(data)
