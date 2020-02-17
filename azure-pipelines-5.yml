@@ -14,7 +14,7 @@ strategy:
       python.version: '3.7'
 
 variables:
-  repositoryName: deleteRepo
+  repositoryName: $(repoName)
 
 steps:
 - task: UsePythonVersion@0
