@@ -1,19 +1,19 @@
 import json
 import sys
 import requests
-URL = 'https://dev.azure.com/'+sys.argv[2]+'/'+sys.argv[3]+'/_apis/git/repositories/'+sys.argv[1]+'?api-version=5.1'
-r = requests.get(url = URL, auth = ('anchitaa95','vqluceje46tbuwz5xnjqhecpgebcg7cjakvbzfe43vg7m2e2zynq'))
+get_URL = 'https://dev.azure.com/'+sys.argv[2]+'/'+sys.argv[3]+'/_apis/git/repositories/'+sys.argv[1]+'?api-version=5.1'
+
+r = requests.get(url = get_URL , auth = (sys.argv[4],sys.argv[5]))
 data=r.json()
-print(data)
 json_string = json.dumps(data)
 x = json.loads(json_string)
-id1 = x["id"]
-URL = "https://dev.azure.com/anchitaa95/deleteRepositoryPipeline/_apis/git/repositories/"+id1+"?api-version=5.1"
+repository_id = x["id"]
+delete_URL = "https://dev.azure.com/"+sys.argv[2]+"/"+sys.argv[3]+"/_apis/git/repositories/"+repository_id+"?api-version=5.1"
 
 id_content = {  "name": sys.argv[1],
                 "project": {
-                  "id": id1
+                  "id": repository_id
                 }
 }
 header = {"Content-type": "application/json"}
-a = requests.delete(url = URL,auth =  ('anchitaa95','vqluceje46tbuwz5xnjqhecpgebcg7cjakvbzfe43vg7m2e2zynq'),data = json.dumps(id_content), headers =header)
+a = requests.delete(url = delete_URL,auth =  (sys.argv[4],sys.argv[5]),data = json.dumps(id_content), headers =header)
