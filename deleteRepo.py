@@ -14,3 +14,5 @@ except KeyError:
   print("URL Incorrect. Check values for Repository/Organization/Project Name")
 except ValueError:
   print("Incorrect Credentials")
+except Exception as error:
+  print(error)
