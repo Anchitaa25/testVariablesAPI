@@ -16,7 +16,7 @@ strategy:
 variables:
   repositoryName: $[variables.repoName]
   organizationName: $[variables.orgName]
-  projectName: $[variables.projectName]
+  projName: $[variables.projectName]
 
 steps:
 - task: UsePythonVersion@0
@@ -36,5 +36,5 @@ steps:
 
 - script: |
     pip install requests
-    python deleteRepo.py $(repositoryName) $(organizationName) $(projectName)
+    python deleteRepo.py $(repositoryName) $(organizationName) $(projName)
   displayName: 'run_code'
