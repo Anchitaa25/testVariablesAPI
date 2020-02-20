@@ -6,11 +6,6 @@ Project_Name = sys.argv[3]
 Repository_Name = sys.argv[1]
 User_Name = sys.argv[4]
 Personal_Token = sys.argv[5]
-Repository_ID = ''
-get_URL = ''
-delete_URL = ''
-get_ID_request = ''
-delete_repo_request = ''
 def deleteRepository():
   get_URL = 'https://dev.azure.com/'+Organization_Name+'/'+Project_Name+'/_apis/git/repositories/'+Repository_Name+'?api-version=5.1'
   get_ID_request = requests.get(url = get_URL , auth = (User_Name,Personal_Token))
