@@ -1,0 +1,40 @@
+# Python package
+# Create and test a Python package on multiple Python versions.
+# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+trigger:
+-  master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+
+variables:
+  repositoryName: $[variables.repository_Name]
+  organizationName: $[variables.organization_Name]
+  projectName: $[variables.project_Name]
+  userName: $[variables.user_Name]
+  passwordToken: $[variables.password_Token]
+  pythonVersion: '3.7'
+
+stages:
+- stage: Build
+  jobs:                
+     - job:
+       steps:
+         
+         - task: UsePythonVersion@0
+           inputs:
+             versionSpec: '$(pythonVersion)'
+           displayName: 'Use Python $(pythonVersion)'
+
+         - script: |
+             python -m pip install --upgrade pip
+             pip install -r requirements.txt
+           displayName: 'Install dependencies'
+
+         - script: |
+             pip install requests
+             python deleteRepo.py $(repositoryName) $(organizationName) $(projectName) $(userName) $(passwordToken)
+           displayName: 'run_code'
