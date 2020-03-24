@@ -21,7 +21,7 @@ variables:
   passwordToken: $[variables.password_Token]
 
 stages:
-- stage: 
+- stage: Build
   jobs: 
      - job:
        steps:
