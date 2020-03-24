@@ -20,22 +20,19 @@ variables:
   userName: $[variables.user_Name]
   passwordToken: $[variables.password_Token]
 
-stages:
-- stage: Build
-  jobs: 
-     - job:
-       steps:
-         - task: UsePythonVersion@0
-           inputs:
-             versionSpec: '$(python.version)'
-           displayName: 'Use Python $(python.version)'
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '$(python.version)'
+  displayName: 'Use Python $(python.version)'
 
-         - script: |
-             python -m pip install --upgrade pip
-             pip install -r requirements.txt
-           displayName: 'Install dependencies'
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+  displayName: 'Install dependencies'
 
-         - script: |
-             pip install requests
-             python deleteRepo.py $(repositoryName) $(organizationName) $(projectName) $(userName) $(passwordToken)
-           displayName: 'run_code'
+
+- script: |
+    pip install requests
+    python deleteRepo.py $(repositoryName) $(organizationName) $(projectName) $(userName) $(passwordToken)
+  displayName: 'run_code'
