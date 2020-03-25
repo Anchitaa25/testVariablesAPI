@@ -12,7 +12,7 @@ pool:
 
 variables:
   - group: check
-  pythonVersion: '3.7'
+  
 
 stages:
 - stage: CreateVarGroup
@@ -22,7 +22,7 @@ stages:
          
          - task: UsePythonVersion@0
            inputs:
-             versionSpec: '$(pythonVersion)'
+             versionSpec: '3.7'
            displayName: 'Use Python $(pythonVersion)'
 
          - script: |
@@ -42,7 +42,7 @@ stages:
          
          - task: UsePythonVersion@0
            inputs:
-             versionSpec: '$(pythonVersion)'
+             versionSpec: '3.7'
            displayName: 'Use Python $(pythonVersion)'
 
          - script: |
