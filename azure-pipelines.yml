@@ -54,5 +54,5 @@ stages:
                Write-Host "key1 = $(key1)"         
          - script: |
              pip install requests
-             python get_var_gp_data.py check
+             python get_var_gp_data.py $(variableGroupName)
            displayName: 'gettingValues'
