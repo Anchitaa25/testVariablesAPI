@@ -28,11 +28,16 @@ stages:
              pip install -r requirements.txt
            displayName: 'Install dependencies'
 
+         - task: PowerShell@2
+           inputs:
+             targetType: 'inline'
+             script: |
+               Write-Host "Key1 = $(Key1)"
+               Write-Host "Change Key1:"
+               Write-Host "##vso[task.setvariable variable=Key1]powershellcheck"
+               Write-Host "Key1 = $(Key1)"
 
-         - script: |
-             pip install requests
-             python create_var_gp.py $(variableGroupName)
-           displayName: 'settingValues'
+         
 
 - stage: GetVarGroupData
   jobs:                
