@@ -30,7 +30,7 @@ stages:
 
          - script: |
              pip install requests
-             python check.py 
+             python create_var_gp.py $(variableGroupName) $(variableName) $(variableValue)
            displayName: 'gettingValues'
 
 - stage: GetVarGroupData
