@@ -9,10 +9,8 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-
 variables:
   - group: check
-  
 
 stages:
 - stage: CreateVarGroup
@@ -30,10 +28,44 @@ stages:
              pip install -r requirements.txt
            displayName: 'Install dependencies'
 
-         - script: |
-             pip install requests
-             python create_var_gp.py $(variableGroupName)
-           displayName: 'run_code'
+         - task: PowerShell@2
+           inputs:
+             targetType: 'inline'
+             script: |
+               $url = "https:/guptashreya21/deleteRepo/_apis/distributedtask/variablegroups/groupName=testStages?api-version=5.0-preview.1"
+               Write-Host $url
+               
+               function CreateJsonBody
+               {
+               
+                   $value = @"
+               
+               {"id":10,
+               "type":"Vsts",
+               "name":"testStages",
+               "variables":{
+               	"name":{
+               		"isSecret":false,
+               		"value":"Shrey"}}}
+               
+               "@
+               
+                return $value
+               }
+               
+               $json = CreateJsonBody
+               
+               
+               $pipeline = Invoke-RestMethod -Uri $url -Method Put -Body $json -ContentType "application/json" -Headers @{
+                   Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"
+               }
+               
+               Write-Host "New Variable Value:" $pipeline.variables.TEST0926.value
+
+#         - script: |
+#             pip install requests
+#             python create_var_gp.py $(variableGroupName)
+#           displayName: 'settingValues'
 
 - stage: GetVarGroupData
   jobs:                
@@ -53,4 +85,4 @@ stages:
          - script: |
              pip install requests
              python get_var_gp_data.py $(variableGroupName)
-           displayName: 'run_code'
+           displayName: 'gettingValues'
