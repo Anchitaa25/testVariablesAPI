@@ -11,6 +11,7 @@ pool:
 
 
 variables:
+  - group: check
   pythonVersion: '3.7'
 
 stages:
@@ -31,8 +32,9 @@ stages:
 
          - script: |
              pip install requests
-             python create_var_gp.py
+             python create_var_gp.py $(variableGroupName)
            displayName: 'run_code'
+
 - stage: GetVarGroupData
   jobs:                
      - job:
@@ -50,5 +52,5 @@ stages:
 
          - script: |
              pip install requests
-             python get_var_gp_data.py
+             python get_var_gp_data.py $(variableGroupName)
            displayName: 'run_code'
