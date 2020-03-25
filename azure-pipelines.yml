@@ -33,7 +33,7 @@ stages:
            inputs:
             targetType: 'inline'
             script: | 
-              'Write-Host "key1 = $(key1)"'"
+               Write-Host "key1 = $(key1)"
                Write-Host "Change key1:"
                Write-Host "##vso[task.setvariable variable=key1]valueeeeeee"
                Write-Host "key1 = $(key1)"
