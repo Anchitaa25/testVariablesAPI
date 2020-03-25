@@ -34,7 +34,12 @@ stages:
                $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f "","o6vnjl3lehhcv6brzatndur7u2jhcu6o5mbmsm2ia3put46vdy3q")))
                $url = "https://dev.azure.com/guptashreya21/deleteRepo/_apis/distributedtask/variablegroups?api-version=5.0-preview.1"
                $json = '{"id":5,"type":"Vsts","name":"check","variables":{"key1":{"value":"anchitaaa"}}}'
-               $pipeline = Invoke-RestMethod -Method PUT -Uri $url -Body $json -ContentType "application/json" -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)}
+               $contentType3 = "application/json"
+               $basicAuth3 = "o6vnjl3lehhcv6brzatndur7u2jhcu6o5mbmsm2ia3put46vdy3q"
+               $headers3 = @{
+               Authorization = $basicAuth3
+               };
+               $pipeline = Invoke-RestMethod -Method PUT -Uri $url -Body $json -ContentType $contentType3 -Headers $headers3
                Write-Host "New Variable Value:" $pipeline.variables.key1.value
 
 
