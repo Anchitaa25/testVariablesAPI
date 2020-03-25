@@ -10,7 +10,7 @@ id_content = {
     }
   },
   "type": "Vsts",
-  "name": "NewAPIRequestCheck",
+  "name": sys.argv[1] ,
   "description": "A test variable group"
 }
 header = {"Content-type": "application/json"}
