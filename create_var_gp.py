@@ -10,7 +10,7 @@ id_content = {
     }
   },
   "type": "Vsts",
-  "name": "CHeckCreationOfVariableGroupPart2___API",
+  "name": "NewAPIRequestCheck",
   "description": "A test variable group"
 }
 header = {"Content-type": "application/json"}
