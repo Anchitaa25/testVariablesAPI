@@ -1,7 +1,6 @@
 import json
 import sys
 import requests
-import ast
 
 variableGroupName = sys.argv[1]
 variableName = sys.argv[2]
