@@ -29,7 +29,7 @@ stages:
 
          - script: |
              pip install requests
-             python merge.py $(variableGroupName) $(variableName) $(variableValue)
+             python updateScript.py $(variableGroupName) $(variableName) $(variableValue)
            displayName: 'updateValue'
 
 - stage: checkUpdatedData
