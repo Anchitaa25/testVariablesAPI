@@ -12,14 +12,6 @@ pool:
 variables:
     - group: variableGroupDetails
 
-variables:
-  repositoryName: $[variables.repository_Name]
-  organizationName: $[variables.organization_name]
-  projectName: $[variables.project_name]
-  userName: $[variables.user_name]
-  passwordToken: $[variables.auth_token]
-
-
 stages:
 - stage: UpdateValues
   jobs:                
