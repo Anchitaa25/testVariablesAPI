@@ -14,6 +14,7 @@ def updateVariableValue():
   get_URL = 'https://dev.azure.com/'+organisation_name+'/'+project_name+'/_apis/distributedtask/variablegroups?groupName='+variableGroupName+'&api-version=5.0-preview.1'
   get_request = requests.get(url = get_URL , auth = (user_name,auth_token))
   get_data = get_request.json()
+  print(get_data)
   variableGroupID = str(get_data["value"][0]["id"])
   variables_json = get_data["value"][0]["variables"]
   variables_json[variableName]["value"]= variableValue
