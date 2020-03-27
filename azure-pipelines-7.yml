@@ -14,6 +14,11 @@ variables:
 
 stages:
 - stage: UpdateValues
+  variables: 
+    userName: $[variables.user_name]
+    authToken: $[variables.auth_token]
+    organisationName: $[variables.organisation_name]
+    projectName: $[variables.project_name]
   jobs:                
      - job:
        steps:
@@ -29,10 +34,15 @@ stages:
 
          - script: |
              pip install requests
-             python updateScript.py $(variableGroupName) $(variableName) $(variableValue) $[variables.user_name] $[variables.auth_token] $[variables.organization_name] $[variables.project_name]
+             python updateScript.py $(variableGroupName) $(variableName) $(variableValue) $(userName) $(authToken) $(organisationName) $(projectName)
            displayName: 'updateValue'
 
 - stage: checkUpdatedData
+  variables: 
+    userName: $[variables.user_name]
+    authToken: $[variables.auth_token]
+    organisationName: $[variables.organisation_name]
+    projectName: $[variables.project_name]
   jobs:                
      - job:
        steps:
@@ -48,6 +58,6 @@ stages:
            
          - script: |
              pip install requests
-             python get_var_gp_data.py $(variableGroupName) $[variables.user_name] $[variables.auth_token] $[variables.organization_name] $[variables.project_name]
+             python get_var_gp_data.py $(variableGroupName) $(userName) $(authToken) $(organisationName) $(projectName)
 
            displayName: 'gettingValues'
