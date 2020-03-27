@@ -1,6 +1,6 @@
 import json
 import sys
-import requestsc
+import requests
 
 variableGroupName = sys.argv[1]
 variableName = sys.argv[2]
