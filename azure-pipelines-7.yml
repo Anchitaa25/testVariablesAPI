@@ -10,7 +10,15 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  - group: variableGroupDetails
+    - group: variableGroupDetails
+
+variables:
+  repositoryName: $[variables.repository_Name]
+  organizationName: $[variables.organization_name]
+  projectName: $[variables.project_name]
+  userName: $[variables.user_name]
+  passwordToken: $[variables.auth_token]
+
 
 stages:
 - stage: UpdateValues
@@ -29,7 +37,7 @@ stages:
 
          - script: |
              pip install requests
-             python updateScript.py $(variableGroupName) $(variableName) $(variableValue)
+             python updateScript.py $(variableGroupName) $(variableName) $(variableValue) $[variables.user_name] $[variables.auth_token] $[variables.organization_name] $[variables.project_name]
            displayName: 'updateValue'
 
 - stage: checkUpdatedData
@@ -48,5 +56,6 @@ stages:
            
          - script: |
              pip install requests
-             python get_var_gp_data.py $(variableGroupName)
+             python get_var_gp_data.py $(variableGroupName) $[variables.user_name] $[variables.auth_token] $[variables.organization_name] $[variables.project_name]
+
            displayName: 'gettingValues'
