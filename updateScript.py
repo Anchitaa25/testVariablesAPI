@@ -16,7 +16,9 @@ def updateVariableValue():
   get_data = get_request.json()
   variableGroupID = str(get_data["value"][0]["id"])
   variables_json = get_data["value"][0]["variables"]
+  print(variables_json)
   variables_json[variableName]["value"]= variableValue
+  print(variables_json)
   del get_data["value"][0]["variables"]
   get_data["value"][0]["variables"]= variables_json
   updated_json = {"id":variableGroupID,"type":"Vsts","name":variableGroupName,"variables":variables_json}
