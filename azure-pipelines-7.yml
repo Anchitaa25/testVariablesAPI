@@ -10,8 +10,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-    
-      letmecheck: deleteRepo
+    - name: letmecheck
+      value: deleteRepo
+    - group: variableGroupDetails
+      
 
 
 stages:
